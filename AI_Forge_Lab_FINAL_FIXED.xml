@@ -31,6 +31,9 @@ opacity:1!important;
 
 .post-body,
 .post-content{
+display:block !important;
+visibility:visible !important;
+opacity:1 !important;
 background:rgba(255,255,255,0.05)!important;
 padding:24px!important;
 border-radius:24px!important;
@@ -188,7 +191,9 @@ display:block !important;
 /* AI FORGE LAB FINAL FIX */
 .blog-posts .post-outer,
 .date-outer{
-display:inline-block !important;
+display:block !important;
+visibility:visible !important;
+opacity:1 !important;
 vertical-align:top !important;
 width:calc(50% - 20px) !important;
 margin:10px !important;
@@ -199,7 +204,7 @@ padding:20px !important;
 box-sizing:border-box !important;
 backdrop-filter:blur(15px) !important;
 -webkit-backdrop-filter:blur(15px) !important;
-overflow:hidden !important;
+overflow:visible !important;
 }
 
 .post,
@@ -294,6 +299,9 @@ overflow:visible !important;
 
 .blog-posts .post-outer,
 .date-outer{
+display:block !important;
+visibility:visible !important;
+opacity:1 !important;
 background:rgba(255,255,255,0.05) !important;
 border:1px solid rgba(255,255,255,0.08) !important;
 border-radius:24px !important;
@@ -617,12 +625,12 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:24px 16p
         <b:widget-setting name='showReactions'>false</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main'>
-        <b:if cond='data:blog.pageType == &quot;item&quot; or data:blog.pageType == &quot;static_page&quot;'>
+        <b:if cond='data:view.isSingleItem'>
           <!-- Single Post or Static Page -->
           <b:loop values='data:posts' var='post'>
             <article class='post-full'>
               <h1><data:post.title/></h1>
-              <b:if cond='data:blog.pageType == &quot;item&quot;'>
+              <b:if cond='data:view.isPost'>
                 <div class='post-meta'>
                   <span><data:post.dateHeader/></span>
                   <b:if cond='data:post.labels'>
@@ -646,9 +654,11 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:24px 16p
             <b:loop values='data:posts' var='post'>
               <article class='post-card'>
                 <a class='post-thumb' expr:href='data:post.url'>
-                  <b:if cond='data:post.thumbnailUrl'>
+                  <b:if cond='data:post.featuredImage'>
+                    <img expr:alt='data:post.title' expr:src='data:post.featuredImage'/>
+                  <b:elseif cond='data:post.thumbnailUrl'/>
                     <img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl'/>
-                    <b:else/>
+                  <b:else/>
                     <img alt='AI Forge Lab' src='https://placehold.co/600x340/020617/00ff88/png?text=AI+Forge+Lab'/>
                   </b:if>
                 </a>
@@ -1107,11 +1117,11 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:24px 16p
   <div class='footer-inner'>
     <div class='footer-links'>
       <a expr:href='data:blog.homepageUrl'>Home</a>
-      <a expr:href='data:blog.homepageUrl + &quot;p/about.html&quot;'>About</a>
-      <a expr:href='data:blog.homepageUrl + &quot;p/contact.html&quot;'>Contact</a>
-      <a expr:href='data:blog.homepageUrl + &quot;p/privacy-policy.html&quot;'>Privacy Policy</a>
-      <a expr:href='data:blog.homepageUrl + &quot;p/terms-of-service.html&quot;'>Terms of Service</a>
-      <a expr:href='data:blog.homepageUrl + &quot;p/disclaimer.html&quot;'>Disclaimer</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/about-us_6.html&quot;'>About</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/contact-us.html&quot;'>Contact</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/privacy-policy_6.html&quot;'>Privacy Policy</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/terms-and-conditions.html&quot;'>Terms &amp; Conditions</a>
+      <a expr:href='data:blog.homepageUrl + &quot;p/disclaimer_6.html&quot;'>Disclaimer</a>
     </div>
     <div class='footer-copy'>&#169; <script>document.write(new Date().getFullYear())</script> AI Forge <span class='accent'>Lab</span> &#8212; All Rights Reserved</div>
   </div>
